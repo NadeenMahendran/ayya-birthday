@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090806">
+<title>A Special Surprise for Ayya</title>
+<style>
+:root{--gold:#e8c66a;--gold2:#fff0b2;--ink:#090806;--muted:#c7bda4}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:#fff8e7;font-family:Georgia,"Times New Roman",serif}
+button{font:inherit;cursor:pointer}
+.screen{min-height:100svh;position:relative;overflow:hidden}
+.gold{color:var(--gold)}
+#intro{display:grid;place-items:center;text-align:center;padding:28px;background:radial-gradient(ellipse at center,#241b09 0,#100d07 42%,#050504 100%)}
+#intro:before,#intro:after{content:"";position:absolute;width:65vw;height:65vw;border:1px solid #d9b95a22;border-radius:50%;animation:orbit 20s linear infinite}
+#intro:after{width:85vw;height:85vw;animation-direction:reverse}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.particle{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold2);box-shadow:0 0 12px 3px #e8c66a55;animation:float var(--d) ease-in-out infinite alternate;opacity:.75}
+@keyframes float{from{transform:translateY(20px) translateX(-5px);opacity:.15}to{transform:translateY(-65px) translateX(12px);opacity:.9}}
+.intro-inner{position:relative;z-index:2;max-width:650px}
+.eyebrow{font:11px/1.5 Arial,sans-serif;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.gift{font-size:clamp(68px,13vw,105px);filter:drop-shadow(0 0 24px #e8c66a77);animation:pulse 2.3s ease-in-out infinite}
+@keyframes pulse{50%{transform:translateY(-7px) scale(1.035);filter:drop-shadow(0 0 35px #e8c66aaa)}}
+h1,h2,p{margin-top:0}
+#intro h1{font-size:clamp(31px,6vw,58px);font-weight:normal;line-height:1.15;margin:20px 0 14px}
+.subtitle{color:#d5cbb4;font-size:clamp(15px,2.5vw,19px);line-height:1.7}
+.gold-button{border:1px solid var(--gold);color:#171106;background:linear-gradient(135deg,#fff0b2,#d6ad48);padding:15px 24px;border-radius:2px;letter-spacing:.08em;font:600 11px Arial,sans-serif;box-shadow:0 0 24px #e8c66a2e;transition:transform .25s,box-shadow .25s}
+.gold-button:hover{transform:translateY(-2px);box-shadow:0 0 34px #e8c66a66}
+#main{display:none}
+#main.show{display:block;animation:fadeIn 1.2s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:64px 22px;background:radial-gradient(ellipse at center,#30220b 0,#0d0b07 45%,#070706 100%);position:relative}
+.curtain{position:absolute;inset:0;background:linear-gradient(90deg,#050403 0%,#211707 48%,#050403 100%);transform:scaleX(1);transform-origin:center;z-index:3;pointer-events:none}
+.hero.revealed .curtain{animation:curtainOpen 1.8s cubic-bezier(.7,0,.2,1) forwards}
+@keyframes curtainOpen{to{transform:scaleX(0);opacity:0}}
+.hero-content{max-width:760px;position:relative;z-index:2}
+.hero-photo{width:min(68vw,310px);height:min(78vw,380px);object-fit:cover;object-position:center;border:1px solid var(--gold);padding:7px;background:#100d06;box-shadow:0 0 0 5px #e8c66a12,0 0 45px #e8c66a22;margin:20px auto 28px;display:block}
+.hero h2{font-size:clamp(39px,8vw,78px);font-weight:normal;letter-spacing:.03em;margin-bottom:8px}
+.hero .smallcap{font:11px Arial,sans-serif;letter-spacing:.35em;color:var(--gold);text-transform:uppercase}
+.section{padding:82px 20px;max-width:1100px;margin:auto}
+.section-heading{text-align:center;margin-bottom:40px}
+.section-heading .eyebrow{margin-bottom:14px}
+.section-heading h2{font-size:clamp(30px,5vw,45px);font-weight:normal;margin-bottom:12px}
+.section-heading p{color:var(--muted);font-size:15px;line-height:1.6}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.memory{border:1px solid #c5a44977;background:#100e09;padding:6px;min-height:140px;transition:transform .3s,border-color .3s;cursor:pointer}
+.memory:hover{transform:translateY(-4px);border-color:var(--gold)}
+.memory img{width:100%;height:clamp(140px,25vw,290px);display:block;object-fit:cover}
+.memory figcaption{font:10px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;text-align:center;color:#d9bd6b;padding:11px 3px 7px}
+#letter-section{background:linear-gradient(180deg,#090806,#151006 50%,#090806);max-width:none}
+.letter-wrap{max-width:850px;margin:auto;padding:0 22px;text-align:center}
+.letter-card{border:1px solid #b99b4b77;padding:clamp(24px,5vw,55px);background:#090806bb;box-shadow:0 0 60px #e8c66a0b}
+.letter-ornament{color:var(--gold);font-size:34px;margin-bottom:18px}
+.tamil-letter{white-space:pre-line;font-family:"Noto Serif Tamil","Latha","Vijaya",serif;font-size:clamp(17px,3vw,23px);line-height:2.05;color:#f5e9c9;text-align:center}
+.letter-signoff{margin-top:26px;color:var(--gold);letter-spacing:.12em;font-size:13px}
+.controls{position:fixed;right:15px;bottom:15px;z-index:20}
+.music-button{border:1px solid #b99b4b;background:#0c0a06e8;color:#f4d779;border-radius:50px;padding:11px 14px;font:11px Arial,sans-serif;letter-spacing:.06em}
+footer{text-align:center;color:#9b8c6b;padding:30px 18px 50px;font:11px Arial,sans-serif;letter-spacing:.12em}
+.lightbox{display:none;position:fixed;inset:0;background:#000e;z-index:30;place-items:center;padding:20px}
+.lightbox.open{display:grid}
+.lightbox img{max-width:94vw;max-height:82svh;border:1px solid var(--gold);padding:5px;background:#100d07}
+.close-lightbox{position:absolute;top:18px;right:18px;background:#171208;border:1px solid var(--gold);color:var(--gold);padding:10px 14px}
+@media(max-width:650px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.memory img{height:220px}.section{padding:65px 15px}.eyebrow{letter-spacing:.25em}}
+@media(max-width:380px){.gallery{grid-template-columns:1fr}.memory img{height:300px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<section id="intro" class="screen">
+  <div class="particles" id="particles"></div>
+  <div class="intro-inner">
+    
+    <div class="gift" aria-hidden="true">🎁</div>
+    <h1>A Special Surprise<br><span class="gold">for Ayya</span></h1>
+    <p class="subtitle">Something special is waiting for you.<br>Made with love, especially for you.</p>
+    <button class="gold-button" id="openBtn">UNLOCK YOUR SURPRISE&nbsp; ✦</button>
+  </div>
+</section>
+
+<main id="main">
+  <section class="hero" id="hero">
+    <div class="curtain"></div>
+    <div class="hero-content">
+      <div class="smallcap">With love and gratitude</div>
+      <img class="hero-photo" src="assets/ayya-welcome.jpg" alt="Ayya at a family celebration">
+      <h2>Happy Birthday</h2>
+      <div class="smallcap" style="font-size:14px;letter-spacing:.4em">Ayya ♥</div>
+      <p class="subtitle" style="margin-top:22px">A celebration of the person you are<br>and the memories we treasure.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div class="eyebrow">The moments we treasure</div>
+      <h2>Precious Memories</h2>
+      <p>Every photograph holds a little piece of our story.<br>Tap a photograph to see it more closely.</p>
+    </div>
+    <div class="gallery">
+      <figure class="memory"><img src="assets/ayya-welcome.jpg" alt="Ayya at a celebration"><figcaption>A special moment</figcaption></figure>
+      <figure class="memory"><img src="assets/ayya-portrait.jpg" alt="Ayya portrait"><figcaption>A portrait to remember</figcaption></figure>
+      <figure class="memory"><img src="assets/family-memory-1.png" alt="Family memory"><figcaption>Together as family</figcaption></figure>
+      <figure class="memory"><img src="assets/ayya-memory.jpg" alt="Ayya smiling"><figcaption>A beautiful memory</figcaption></figure>
+      <figure class="memory"><img src="assets/family-memory-2.jpg" alt="Family photograph"><figcaption>Moments with loved ones</figcaption></figure>
+      <figure class="memory"><img src="assets/ayya-smile.png" alt="Ayya smiling"><figcaption>A smile worth celebrating</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" id="letter-section">
+    <div class="letter-wrap">
+      <div class="section-heading">
+        <div class="eyebrow">From the heart</div>
+        <h2>A Few Words for Ayya</h2>
+        <p>With love, respect, and gratitude.</p>
+      </div>
+      <div class="letter-card">
+        <div class="letter-ornament">✦</div>
+        <div class="tamil-letter" id="letterText">ஆன்மிகமும் அறிவியலும் கலந்து திகட்டாமல் ஊட்டும்
+எங்கள் அய்யாவிற்க்கு
+இனிய பிறந்தநாள் வணக்கம்
+எச்சூழலிலும் தனக்கென்று ஒருபோதும் சிந்திக்காத எங்கள் அய்யாவிற்க்கு இனிய பிறந்தநாள் வணக்கங்கள்
+இமயம் தொட்டபின்னும்
+இன்றும் LKG செல்லும் குழந்தையான எங்கள் அய்யாவிற்க்கு
+இனிய பிறந்தநாள் வணக்கங்கள்
+வெறும் வார்த்தைகளில் அல்ல
+51 சக்தி பீட சக்திகள் என்று 
+பெண்களுக்கு மகுடம் சூட்டி அழகு பார்க்கும்
+எங்கள் அய்யாவிற்க்கு
+இனிய பிறந்தநாள் வணக்கங்கள்
+18 சித்தர்களுக்கு ஒரே கல்லில் பீடம் அமைத்து இமயத்தை தொட்ட
+எங்கள் அய்யாவிற்கு
+இனிய பிறந்தநாள் வணக்கங்கள் 
+தனிஒரு இந்தியராய்
+இனைசேரா பல நாட்டினரின் இதயங்களை வென்றவர்
+ஒருவர் செய்த சாதனைக்கு பதக்கங்கள் தருவார்கள்
+கணக்கற்ற சாதனைகளை செய்தும்கூட
+செய்ததே தெரியாமல்
+சாந்தமாய் சிரிப்புடன் கடந்து செல்லும் எங்கள் அய்யாவுக்கு
+அன்புடன் இனிய பிறந்தநாள் வணக்கங்கள் சொல்கிறோம்
+நன்றிங்க அய்யா</div>
+        <div class="letter-signoff">WITH LOVE ♥</div>
+      </div>
+    </div>
+  </section>
+  <footer>MADE WITH LOVE, ESPECIALLY FOR AYYA&nbsp; ✦</footer>
+</main>
+
+<div class="controls" id="musicControls" hidden><button class="music-button" id="musicBtn">♫ Music: On</button></div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer">
+  <button class="close-lightbox" id="closeLightbox">CLOSE ✕</button>
+  <img id="lightboxImage" src="" alt="Enlarged memory">
+</div>
+
+<!-- Replace this optional file with a licensed MP3 named assets/birthday-music.mp3.
+     The website remains usable if no audio file has been added. -->
+<audio id="bgMusic" loop preload="none">
+  <source src="assets/birthday-music.mp3" type="audio/mpeg">
+</audio>
+<script>
+const particleLayer=document.getElementById('particles');
+for(let i=0;i<45;i++){
+  const p=document.createElement('span');p.className='particle';
+  p.style.left=Math.random()*100+'%';p.style.top=Math.random()*100+'%';
+  p.style.setProperty('--d',(4+Math.random()*7)+'s');
+  p.style.animationDelay=(-Math.random()*8)+'s';
+  p.style.transform='scale('+(0.5+Math.random()*1.8)+')';
+  particleLayer.appendChild(p);
+}
+const intro=document.getElementById('intro'),main=document.getElementById('main');
+const music=document.getElementById('bgMusic'),musicBtn=document.getElementById('musicBtn');
+document.getElementById('openBtn').addEventListener('click',async()=>{
+  intro.style.display='none';main.classList.add('show');
+  document.getElementById('musicControls').hidden=false;
+  document.getElementById('hero').classList.add('revealed');
+  try{await music.play();musicBtn.textContent='♫ Music: On';}
+  catch(e){musicBtn.textContent='♫ Add music file';}
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+musicBtn.addEventListener('click',async()=>{
+  if(music.paused){try{await music.play();musicBtn.textContent='♫ Music: On';}catch(e){musicBtn.textContent='♫ Add music file';}}
+  else{music.pause();musicBtn.textContent='♫ Music: Off';}
+});
+document.querySelectorAll('.memory').forEach(fig=>{
+  fig.addEventListener('click',()=>{
+    const img=fig.querySelector('img');document.getElementById('lightboxImage').src=img.src;
+    document.getElementById('lightbox').classList.add('open');
+  });
+});
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+document.getElementById('closeLightbox').addEventListener('click',closeLightbox);
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLightbox();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+</script>
+</body>
+</html>
